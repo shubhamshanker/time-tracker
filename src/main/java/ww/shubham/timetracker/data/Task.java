@@ -1,5 +1,6 @@
 package ww.shubham.timetracker.data;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +13,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Task {
 
     private String taskName;
@@ -30,4 +30,26 @@ public class Task {
         this.startTime = LocalDateTime.now();
         this.taskStatus = TaskStatus.IN_PROGRESS;
     }
+
+    @Override
+    public String toString() {
+        return "Task [taskName=" + taskName + ", category=" + category + ", startTime=" + startTime + ", endTime="
+                + endTime + ", taskStatus=" + taskStatus + "]";
+    }
+
+    public String getCSVFormat()
+    {
+        return taskName + "," 
+                + category.getName() + ","
+                + startTime + ","
+                + endTime + ","
+                + taskStatus;
+    }
+
+    public Duration getTaskDuration()
+    {
+        if(this.getEndTime() == null) return null;
+        return Duration.between(this.getStartTime(), this.getEndTime());
+    }
+    
 }

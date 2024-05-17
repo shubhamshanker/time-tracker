@@ -9,6 +9,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Category {
 
+    public static final String NONE = "no-category";
+
+    public Category(String categoryName) {
+        this.name = categoryName;
+    }
     private String name;
     private int totalTime;
 

@@ -7,7 +7,6 @@ public class TaskStartProcessor implements Processor {
     @Override
     public void process(Task task) {
         // TODO Auto-generated method stub
-
         
     }
     
